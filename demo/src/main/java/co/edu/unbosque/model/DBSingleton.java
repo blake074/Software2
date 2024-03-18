@@ -9,7 +9,7 @@ public class DBSingleton {
     private static Connection instance = null;
 
     public static void getInstance(){
-        String url = "jdbc:mysql:// localhost:3306/empresa_abc";
+        String url = "jdbc:mysql:// localhost:8080/empresa_abc";
         String user = "root";
         String pass = "1234";
         try{

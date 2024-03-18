@@ -18,9 +18,6 @@ public class Empleado {
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 @Size(max = 40)
-@Column(name = "rol")
-    private String rol;
-@Size(max = 40)
 @Column(name = "Nombre_Empleado")
     private String nombreCompleto;
     @Size(max = 40)
@@ -43,4 +40,8 @@ public class Empleado {
     @JoinColumn(name = "ID_TipoDocumento")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private IDTipoDocumento idTipoDocumento;
+    @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ID_Rol")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Rol rol;
 }

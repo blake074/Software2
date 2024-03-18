@@ -1,8 +1,11 @@
 package co.edu.unbosque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -22,8 +25,26 @@ public class Proyecto {
     private Date fechaInicio;
     @Column(name = "Fecha_Fin")
     private Date fechaFinal;
-    @Column(name = "EstadoProyecto")
-    private String estadoProyecto;
     @Column(name = "Descripcion_Proyecto")
     private String descripcion;
+    @Column(name = "Presupuesto")
+    private int presupuesto;
+    @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "ID_EstadoProyecto")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private EstadoProyecto estadoProyecto;
+
+    public Proyecto (ProyectoBuilder proyectoBuilder){
+        this.idProyecto = proyectoBuilder.getIdProyecto();
+        this.nombreProyecto = proyectoBuilder.getNombreProyecto();
+        this.fechaInicio = proyectoBuilder.getFechaInicio();
+        this.fechaFinal = proyectoBuilder.getFechaFinal();
+        this.descripcion = proyectoBuilder.getDescripcion();
+        this.presupuesto = proyectoBuilder.getPresupuesto();
+        this.estadoProyecto = proyectoBuilder.getEstadoProyecto();
+    }
+
+    public Proyecto() {
+
+    }
 }
