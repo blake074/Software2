@@ -1,4 +1,4 @@
-package co.edu.unbosque.model;
+package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -11,10 +11,11 @@ import lombok.Setter;
 @Table(name = "rol")
 public class Rol {
     @Id
-    @Column(name = "ID_Rol")
+    @Column(name = "id_rol")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idRol;
+    private int id_rol;
+
     @Size(max =  40)
-    @Column(name = "Descripcion_Rol")
-    private String descripcionRol;
+    @Column(name = "descripcion_rol")
+    private String descripcion_rol;
 }

@@ -1,8 +1,6 @@
 package co.edu.unbosque.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import co.edu.unbosque.model.entities.EstadoProyecto;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,18 +9,18 @@ import java.util.Date;
 @Getter
 public class ProyectoBuilder {
 
-    private int idProyecto;
+    private int id_proyecto;
 
-    private String nombreProyecto;
+    private String nombre_proyecto;
 
-    private Date fechaInicio;
+    private Date fecha_inicio;
 
-    private Date fechaFinal;
+    private Date fecha_fin;
 
-    private String descripcion;
+    private String descripcion_proyecto;
 
     private int presupuesto;
 
-    private EstadoProyecto estadoProyecto;
+    private EstadoProyecto id_estado_proyecto;
 
 }

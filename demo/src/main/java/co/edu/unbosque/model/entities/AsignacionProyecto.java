@@ -1,4 +1,4 @@
-package co.edu.unbosque.model;
+package co.edu.unbosque.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -10,22 +10,26 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "asignacionetapaproyecto")
-public class AsigncionProyecto {
+@Table(name = "asignacion_etapa_proyecto")
+public class AsignacionProyecto {
     @Id
-    @Column(name = "ID_AsignacionEtapaProyecto")
+    @Column(name = "id_asignacion_etapa_proyecto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idAsignacionProyecto;
+    private int id_asignacion_etapa_proyecto;
+
     @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ID_Proyecto")
+    @JoinColumn(name = "id_proyecto")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Proyecto idProyecto;
+    private Proyecto id_proyecto;
+
     @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ID_CicloVidaProyecto")
+    @JoinColumn(name = "id_ciclo_vida_proyecto")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private CicloVidaProyecto idCicloVidaProyecto;
+    private CicloVidaProyecto id_ciclo_vida_proyecto;
+
     @Column(name = "fecha_inicio")
-    private Date fechaInicio;
+    private Date fecha_inicio;
+
     @Column(name = "fecha_fin")
-    private Date fechaFin;
+    private Date fecha_fin;
 }
