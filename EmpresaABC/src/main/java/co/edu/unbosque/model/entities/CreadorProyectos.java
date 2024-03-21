@@ -1,17 +1,22 @@
 package co.edu.unbosque.model.entities;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
+@Component
 public class CreadorProyectos implements ProyectoFactory {
 
+
     @Override
-    public Proyecto createProyecto(int idDescripcionProyecto, String nombreProyecto, Date fechaInicio, Date fechaFin, String estadoProyecto) {
+    public Proyecto createProyecto(String nombreProyecto, Date fechaInicio, Date fechaFin, String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
         Proyecto proyecto = new Proyecto();
-        proyecto.idDescripcionProyecto = idDescripcionProyecto;
-        proyecto.nombreProyecto = nombreProyecto;
-        proyecto.fechaInicio = fechaInicio;
-        proyecto.fechaFin = fechaFin;
-        proyecto.estadoProyecto = estadoProyecto;
+        nombreProyecto = proyecto.getNombre_proyecto();
+        fechaInicio = proyecto.getFecha_inicio();
+        fechaFin = proyecto.getFecha_fin();
+        descripcionProyecto = proyecto.getDescripcion_proyecto();
+        presupuesto = proyecto.getPresupuesto();
+        idEstadoProyecto = proyecto.getId_estado_proyecto();
         return proyecto;
     }
 }

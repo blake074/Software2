@@ -3,7 +3,9 @@ package co.edu.unbosque.model.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -12,6 +14,8 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "proyecto")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Proyecto {
     @Id
     @Column(name = "id_proyecto")
