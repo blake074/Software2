@@ -40,4 +40,17 @@ public class Proyecto {
     private EstadoProyecto id_estado_proyecto;
 
 
+
+    @Override
+    public String toString() {
+        return "Proyecto{" +
+                "id_proyecto=" + id_proyecto +
+                ", nombre_proyecto='" + nombre_proyecto + '\'' +
+                ", fecha_inicio=" + fecha_inicio +
+                ", fecha_fin=" + fecha_fin +
+                ", descripcion_proyecto='" + descripcion_proyecto + '\'' +
+                ", presupuesto=" + presupuesto +
+                ", id_estado_proyecto=" + id_estado_proyecto +
+                '}';
+    }
 }
