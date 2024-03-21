@@ -1,6 +1,5 @@
 package co.edu.unbosque.model.entities;
 
-import co.edu.unbosque.model.ProyectoBuilder;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -40,17 +39,5 @@ public class Proyecto {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private EstadoProyecto id_estado_proyecto;
 
-    public Proyecto (ProyectoBuilder proyectoBuilder){
-        this.id_proyecto = proyectoBuilder.getId_proyecto();
-        this.nombre_proyecto = proyectoBuilder.getNombre_proyecto();
-        this.fecha_inicio = proyectoBuilder.getFecha_inicio();
-        this.fecha_fin = proyectoBuilder.getFecha_fin();
-        this.descripcion_proyecto = proyectoBuilder.getDescripcion_proyecto();
-        this.presupuesto = proyectoBuilder.getPresupuesto();
-        this.id_estado_proyecto = proyectoBuilder.getId_estado_proyecto();
-    }
 
-    public Proyecto() {
-
-    }
 }

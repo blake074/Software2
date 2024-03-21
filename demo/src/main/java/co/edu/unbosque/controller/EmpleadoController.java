@@ -1,13 +1,17 @@
 package co.edu.unbosque.controller;
 
 import co.edu.unbosque.model.entities.Empleado;
+import co.edu.unbosque.model.entities.EmpleadoBuilder;
 import co.edu.unbosque.model.entities.EmpleadoDTO;
+import co.edu.unbosque.model.repositories.EmpleadoRepository;
 import co.edu.unbosque.model.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * El controlador de la entidad Empleado, que maneja las solicitudes relacionadas con los empleados.
@@ -17,29 +21,24 @@ import java.util.List;
 public class EmpleadoController {
 
     /**
-     * El servicio de empleado que maneja la lógica de negocio relacionada con los empleados.
+     * El repositorio de empleado que proporciona acceso a la base de datos para los empleados.
      */
-    @Autowired
-    private EmpleadoService empleadoService;
+    private EmpleadoRepository empleadoRepository;
 
     /**
-     * Maneja las solicitudes GET para obtener una lista de empleados.
-     * @return Una lista de objetos EmpleadoDTO que representan los empleados.
+     * El constructor de EmpleadoBuilder que se utiliza para convertir entidades Empleado a objetos EmpleadoDTO.
      */
-    @GetMapping("/lista")
-    public List<EmpleadoDTO> obtenerEmpleados() {
-        return (List<EmpleadoDTO>) empleadoService.obtenerEmpleados();
-    }
-
+    private EmpleadoBuilder empleadoBuilder;
 
     /**
-     * Maneja las solicitudes POST para crear un nuevo empleado.
-     * @param empleado El objeto Empleado recibido en el cuerpo de la solicitud.
+     * Crea un nuevo empleado en la base de datos y devuelve su representación en forma de EmpleadoDTO.
+     * @param empleado El objeto Empleado que se creará.
      * @return El objeto EmpleadoDTO creado para el empleado.
      */
     @PostMapping("/crear")
-    public EmpleadoDTO crearEmpleado(@RequestBody Empleado empleado) {
-        return empleadoService.crearEmpleado(empleado);
+    public EmpleadoDTO crearEmpleado(Empleado empleado) {
+        empleadoRepository.save(empleado);
+        return empleadoBuilder.convertToDto(empleado);
     }
 
     /**
@@ -49,16 +48,27 @@ public class EmpleadoController {
      */
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public EmpleadoDTO actualizarEmpleado(@RequestBody Empleado empleado) {
-        return empleadoService.crearEmpleado(empleado);
+        return crearEmpleado(empleado);
     }
 
     /**
-     * Maneja las solicitudes DELETE para eliminar un empleado por su ID.
-     * @param id_empleado El ID del empleado que se eliminará.
+     * Obtiene una lista de todos los empleados en forma de objetos EmpleadoDTO.
+     * @return Una lista de objetos EmpleadoDTO que representan los empleados.
      */
-    @DeleteMapping("{id_empleado}")
-    public void eliminarEmpleado(@PathVariable("id_empleado") int id_empleado) {
-        empleadoService.eliminarEmpleados(id_empleado);
+    @GetMapping("/lista")
+    public List<EmpleadoDTO> obtenerEmpleados() {
+        List<Empleado> empleados = empleadoRepository.findAll();
+        return empleados.stream()
+                .map(empleadoBuilder::convertToDto)
+                .collect(Collectors.toList());
     }
 
+    /**
+     * Elimina un empleado de la base de datos según su ID.
+     * @param id El ID del empleado que se eliminará.
+     */
+    @DeleteMapping("{id_empleado}")
+    public void eliminarEmpleados(int id) {
+        empleadoRepository.deleteById(id);
+    }
 }

@@ -5,11 +5,11 @@ import co.edu.unbosque.model.entities.EmpleadoBuilder;
 import co.edu.unbosque.model.entities.EmpleadoDTO;
 import co.edu.unbosque.model.repositories.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 @Service
 public class EmpleadoService {
 
@@ -30,6 +30,7 @@ public class EmpleadoService {
      * @param empleado El objeto Empleado que se creará.
      * @return El objeto EmpleadoDTO creado para el empleado.
      */
+    @Bean
     public EmpleadoDTO crearEmpleado(Empleado empleado) {
         empleadoRepository.save(empleado);
         return empleadoBuilder.convertToDto(empleado);
@@ -46,6 +47,7 @@ public class EmpleadoService {
      * Obtiene una lista de todos los empleados en forma de objetos EmpleadoDTO.
      * @return Una lista de objetos EmpleadoDTO que representan los empleados.
      */
+    @Bean
     public List<EmpleadoDTO> obtenerEmpleados() {
         List<Empleado> empleados = empleadoRepository.findAll();
         return empleados.stream()
@@ -57,6 +59,7 @@ public class EmpleadoService {
      * Elimina un empleado de la base de datos según su ID.
      * @param id El ID del empleado que se eliminará.
      */
+    @Bean
     public void eliminarEmpleados(int id) {
         empleadoRepository.deleteById(id);
     }
