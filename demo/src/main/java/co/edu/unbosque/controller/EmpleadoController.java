@@ -4,7 +4,6 @@ import co.edu.unbosque.model.entities.Empleado;
 import co.edu.unbosque.model.entities.EmpleadoBuilder;
 import co.edu.unbosque.model.entities.EmpleadoDTO;
 import co.edu.unbosque.model.repositories.EmpleadoRepository;
-import co.edu.unbosque.model.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
