@@ -3,7 +3,7 @@ package co.edu.unbosque.model.entities;
 import jakarta.persistence.Entity;
 
 public class SingletonEmpresa {
-    private static SingletonEmpresa instace;
+    private static SingletonEmpresa instace = null;
 
     private int idEmpresa;
     private int idEmpleado;
