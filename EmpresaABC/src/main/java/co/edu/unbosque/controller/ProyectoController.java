@@ -37,13 +37,12 @@ public class ProyectoController {
         );
         return ResponseEntity.ok(newProyecto);
     }
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Proyecto actualizarEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, LocalDate fechaInicio, LocalDate fechaFin,
-                                       String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
-        return proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+    @PutMapping("/actualizar")
+    public Proyecto actualizarProyecto(@RequestBody Proyecto proyecto) {
+        return proyectoService.updateProyecto(proyecto);
     }
     @DeleteMapping("{id_proyecto}")
-    public void eliminarEmpleado(@PathVariable("id_proyecto") int idProyecto) {
+    public void eliminarProyecto(@PathVariable("id_proyecto") int idProyecto) {
         proyectoService.eliminarProyectos(idProyecto);
     }
 }
