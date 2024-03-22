@@ -26,14 +26,15 @@ public class ProyectoController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto,
-                                                  @RequestParam String nombreProyecto,
-                                                  @RequestParam LocalDate fechaInicio,
-                                                  @RequestParam LocalDate fechaFin,
-                                                  @RequestParam String descripcionProyecto,
-                                                  @RequestParam int presupuesto,
-                                                  @RequestParam EstadoProyecto idEstadoProyecto) {
-        Proyecto newProyecto = proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+    public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto) {
+        Proyecto newProyecto = proyectoService.createProyecto(
+                proyecto.getNombre_proyecto(),
+                proyecto.getFecha_inicio(),
+                proyecto.getFecha_fin(),
+                proyecto.getDescripcion_proyecto(),
+                proyecto.getPresupuesto(),
+                proyecto.getId_estado_proyecto()
+        );
         return ResponseEntity.ok(newProyecto);
     }
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
