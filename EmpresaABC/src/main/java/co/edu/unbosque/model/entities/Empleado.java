@@ -2,7 +2,9 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -11,6 +13,8 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "empleado")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Empleado {
 
     @Id
@@ -52,4 +56,6 @@ public class Empleado {
     @JoinColumn(name = "id_rol")
     //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Rol id_rol;
+
+
 }
