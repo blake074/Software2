@@ -13,8 +13,6 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "empleado")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Empleado {
 
     @Id

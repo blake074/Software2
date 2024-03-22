@@ -6,6 +6,7 @@ import co.edu.unbosque.model.repositories.ProyectoRepository;
 import co.edu.unbosque.model.services.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -22,15 +23,22 @@ public class ProyectoController {
     public List<Proyecto> obtenerEmpleados() {
         return (List<Proyecto>) proyectoService.obtenerProyectos();
     }
+
     @PostMapping("/crear")
-    public Proyecto crearEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, Date fechaInicio, Date fechaFin,
-                                     String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
-        return proyectoService.crearProyecto(proyecto, nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+    public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto,
+                                                  @RequestParam String nombreProyecto,
+                                                  @RequestParam Date fechaInicio,
+                                                  @RequestParam Date fechaFin,
+                                                  @RequestParam String descripcionProyecto,
+                                                  @RequestParam int presupuesto,
+                                                  @RequestParam EstadoProyecto idEstadoProyecto) {
+        Proyecto newProyecto = proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+        return ResponseEntity.ok(newProyecto);
     }
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Proyecto actualizarEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, Date fechaInicio, Date fechaFin,
                                        String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
-        return proyectoService.crearProyecto(proyecto, nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+        return proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
     }
     @DeleteMapping("{id_proyecto}")
     public void eliminarEmpleado(@PathVariable("id_proyecto") int idProyecto) {

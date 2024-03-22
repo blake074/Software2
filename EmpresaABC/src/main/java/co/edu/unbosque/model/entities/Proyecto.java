@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -27,10 +28,10 @@ public class Proyecto {
     private String nombre_proyecto;
 
     @Column(name = "fecha_inicio")
-    private Date fecha_inicio;
+    private LocalDate fecha_inicio;
 
     @Column(name = "fecha_fin")
-    private Date fecha_fin;
+    private LocalDate fecha_fin;
 
     @Column(name = "descripcion_proyecto")
     private String descripcion_proyecto;
