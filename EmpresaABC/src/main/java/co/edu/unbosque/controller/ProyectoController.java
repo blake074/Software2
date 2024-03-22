@@ -1,7 +1,5 @@
 package co.edu.unbosque.controller;
 
-import co.edu.unbosque.model.entities.Empleado;
-import co.edu.unbosque.model.entities.EmpleadoDTO;
 import co.edu.unbosque.model.entities.EstadoProyecto;
 import co.edu.unbosque.model.entities.Proyecto;
 import co.edu.unbosque.model.repositories.ProyectoRepository;
@@ -15,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/proyectos")
-public class ProyectController {
+public class ProyectoController {
     @Autowired
     private ProyectoService proyectoService;
     @Autowired
@@ -34,7 +32,7 @@ public class ProyectController {
                                        String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
         return proyectoService.crearProyecto(proyecto, nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
     }
-    @DeleteMapping("{id_empleado}")
+    @DeleteMapping("{id_proyecto}")
     public void eliminarEmpleado(@PathVariable("id_proyecto") int idProyecto) {
         proyectoService.eliminarProyectos(idProyecto);
     }
