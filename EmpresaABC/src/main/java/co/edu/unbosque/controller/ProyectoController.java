@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class ProyectoController {
     @PostMapping("/crear")
     public ResponseEntity<Proyecto> crearProyecto(@RequestBody Proyecto proyecto,
                                                   @RequestParam String nombreProyecto,
-                                                  @RequestParam Date fechaInicio,
-                                                  @RequestParam Date fechaFin,
+                                                  @RequestParam LocalDate fechaInicio,
+                                                  @RequestParam LocalDate fechaFin,
                                                   @RequestParam String descripcionProyecto,
                                                   @RequestParam int presupuesto,
                                                   @RequestParam EstadoProyecto idEstadoProyecto) {
@@ -36,7 +37,7 @@ public class ProyectoController {
         return ResponseEntity.ok(newProyecto);
     }
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Proyecto actualizarEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, Date fechaInicio, Date fechaFin,
+    public Proyecto actualizarEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, LocalDate fechaInicio, LocalDate fechaFin,
                                        String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
         return proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
     }

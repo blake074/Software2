@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ProyectoService implements ProyectoFactory {
     }
 
     @Override
-    public Proyecto createProyecto(String nombreProyecto, Date fechaInicio, Date fechaFin, String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
+    public Proyecto createProyecto(String nombreProyecto, LocalDate fechaInicio, LocalDate fechaFin, String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
         Proyecto proyecto = new Proyecto();
         proyecto.setNombre_proyecto(nombreProyecto);
         proyecto.setFecha_inicio(fechaInicio);
