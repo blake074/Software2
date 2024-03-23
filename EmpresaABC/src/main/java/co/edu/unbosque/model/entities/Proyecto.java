@@ -37,14 +37,12 @@ public class Proyecto {
     private String descripcion_proyecto;
 
     @Column(name = "presupuesto")
-    private int presupuesto;
+    private Integer presupuesto;
 
     @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_estado_proyecto")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private EstadoProyecto id_estado_proyecto;
-
-
 
     @Override
     public String toString() {
