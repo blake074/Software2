@@ -21,8 +21,7 @@ public class ProyectoController {
     @Autowired
     private ProyectoRepository proyectoRepository;
     @GetMapping("/lista")
-    public List<Proyecto> obtenerProyectos() {
-
+    public List<Proyecto> obtenerEmpleados() {
         return (List<Proyecto>) proyectoService.obtenerProyectos();
     }
 
