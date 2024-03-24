@@ -1,37 +1,22 @@
 package co.edu.unbosque.controller;
-
-import co.edu.unbosque.model.entities.EstadoProyecto;
 import co.edu.unbosque.model.entities.Proyecto;
-import co.edu.unbosque.model.repositories.ProyectoRepository;
 import co.edu.unbosque.model.services.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-@Controller
+@CrossOrigin(origins = "*")
+@RestController
 @RequestMapping("/api/proyectos")
 public class ProyectoController {
     @Autowired
     private ProyectoService proyectoService;
-    @Autowired
-    private ProyectoRepository proyectoRepository;
+
     @GetMapping("/lista")
-    public List<Proyecto> obtenerEmpleados() {
-        return (List<Proyecto>) proyectoService.obtenerProyectos();
-    }
-    @GetMapping
-    public String proyectoMostrar(Model model){
-        List<Proyecto> proyectos = proyectoService.obtenerProyectos();
-        model.addAttribute("proyectos", proyectos);
-        System.out.println(proyectos.toString());
-        return "Proyecto";
+    public List<Proyecto> obtenerProyectos() {
+        return proyectoService.obtenerProyectos();
     }
 
     @PostMapping("/crear")
@@ -46,13 +31,13 @@ public class ProyectoController {
         );
         return ResponseEntity.ok(newProyecto);
     }
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Proyecto actualizarEmpleado(@RequestBody Proyecto proyecto, String nombreProyecto, LocalDate fechaInicio, LocalDate fechaFin,
-                                       String descripcionProyecto, int presupuesto, EstadoProyecto idEstadoProyecto) {
-        return proyectoService.createProyecto(nombreProyecto, fechaInicio, fechaFin, descripcionProyecto, presupuesto, idEstadoProyecto);
+    @PutMapping("/actualizar/{id_proyecto}")
+    public Proyecto actualizarProyecto(@PathVariable("id_proyecto") int idProyecto, @RequestBody Proyecto proyecto) {
+        proyecto.setId_proyecto(idProyecto);
+        return proyectoService.updateProyecto(proyecto);
     }
     @DeleteMapping("{id_proyecto}")
-    public void eliminarEmpleado(@PathVariable("id_proyecto") int idProyecto) {
+    public void eliminarProyecto(@PathVariable("id_proyecto") int idProyecto) {
         proyectoService.eliminarProyectos(idProyecto);
     }
 }

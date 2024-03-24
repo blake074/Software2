@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -38,12 +39,15 @@ public class EmpleadoService {
         return empleadoBuilder.convertToDto(empleado);
     }
 
-    /*
-    public EmpleadoDTO obtenerEmpleados() {
-        return (EmpleadoDTO) empleadoRepository.findAll();
-    }
+    public EmpleadoDTO actualizarEmpleado(Empleado empleado) {
+        Optional<Empleado> empleadoExistente = empleadoRepository.findById(empleado.getId_empleado());
 
-     */
+        if (empleadoExistente.isPresent()) {
+            Empleado empleadoActualizado = empleadoRepository.save(empleado);
+            return empleadoBuilder.convertToDto(empleadoActualizado);
+        }
+        return null;
+    }
 
     /**
      * Obtiene una lista de todos los empleados en forma de objetos EmpleadoDTO.

@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * El controlador de la entidad Empleado, que maneja las solicitudes relacionadas con los empleados.
+ */
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping("/api/empleados")
 public class EmpleadoController {
@@ -80,13 +84,6 @@ public class EmpleadoController {
 
         return new ModelAndView("ListaEtapasForm");
     }
-/*
-    @GetMapping("/")
-    public ModelAndView index() {
-
-        return new ModelAndView("Proyecto");
-    }
-*/
     @GetMapping("ProyectoForm")
     public ModelAndView proyectosForm() {
 
@@ -116,24 +113,12 @@ public class EmpleadoController {
 
         return new ModelAndView("TipoDocumentoForm");
     }
+
     /**
      * El servicio de empleado que maneja la lógica de negocio relacionada con los empleados.
      */
     @Autowired
     private EmpleadoService empleadoService;
-
-    /**
-     * El repositorio de empleado que proporciona acceso a la base de datos para los empleados.
-     */
-    @Autowired
-    private EmpleadoRepository empleadoRepository;
-
-    /*
-    @GetMapping("/lista")
-    public List<Empleado> obtenerEmpleados() {
-        return empleadoRepository.findAll();
-    }
-     */
 
     /**
      * Maneja las solicitudes GET para obtener una lista de empleados.
@@ -143,7 +128,6 @@ public class EmpleadoController {
     public List<EmpleadoDTO> obtenerEmpleados() {
         return (List<EmpleadoDTO>) empleadoService.obtenerEmpleados();
     }
-
 
     /**
      * Maneja las solicitudes POST para crear un nuevo empleado.
@@ -160,9 +144,10 @@ public class EmpleadoController {
      * @param empleado El objeto Empleado recibido en el cuerpo de la solicitud.
      * @return El objeto EmpleadoDTO actualizado para el empleado.
      */
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public EmpleadoDTO actualizarEmpleado(@RequestBody Empleado empleado) {
-        return empleadoService.crearEmpleado(empleado);
+    @PutMapping("/actualizar/{id}")
+    public EmpleadoDTO actualizarEmpleado(@PathVariable("id") int id, @RequestBody Empleado empleado) {
+        empleado.setId_empleado(id);
+        return empleadoService.actualizarEmpleado(empleado);
     }
 
     /**
@@ -173,6 +158,4 @@ public class EmpleadoController {
     public void eliminarEmpleado(@PathVariable("id_empleado") int id_empleado) {
         empleadoService.eliminarEmpleados(id_empleado);
     }
-
-
 }

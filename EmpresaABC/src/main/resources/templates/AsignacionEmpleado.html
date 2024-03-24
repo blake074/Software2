@@ -5,7 +5,7 @@
   <title></title>
 
   <link rel="stylesheet" type="text/css" href="{% static 'Principal.css' %}">
-
+  <link rel="stylesheet" href="styles.css">
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -13,103 +13,123 @@
 
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'Principal.css' %}">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Empresa ABC</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav d-flex">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Empresa ABC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav d-flex">
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Proyectos
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/api/proyectos">Lista de proyectos</a></li>
-              <li><a class="dropdown-item" href="/api/empleados/ListaEtapas">Etapas</a></li>
-              <li><a class="dropdown-item" href="/api/empleados/EstadoProyecto">Estados</a></li>
-              <li><a class="dropdown-item" href="/api/empleados/AsignacionEmpleado">Asignaciones</a></li>
-            </ul>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Proyectos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="Proyecto2.html">Lista de proyectos</a></li>
+            <li><a class="dropdown-item" href="ListaEtapas.html">Etapas</a></li>
+            <li><a class="dropdown-item" href="EstadoProyecto.html">Estados</a></li>
+            <li><a class="dropdown-item" href="AsignacionEmpleado.html">Asignaciones</a></li>
+          </ul>
+        </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">
-              Empleados
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/api/empleados">Lista de empleados</a></li>
-              <li><a class="dropdown-item" href="/api/empleados/Rol">Roles</a></li>
-            </ul>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Empleados
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="Empleado2.html">Lista de empleados</a></li>
+            <li><a class="dropdown-item" href="Rol.html">Roles</a></li>
+          </ul>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="/api/empleados/TipoDocumento">Documentos</a>
-          </li>
-
-  </nav>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-
-
-        <div class="card">
-          <div class="card-header">
-            <a name="" id="" class="btn btn-success" href="AsignacionEmpleadoForm.html" role="button">Asignar un empleado a un proyecto</a>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Lista de asignaciones</h4>
-            <div class="table-responsive">
-              <table class="table table-primary">
-
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Proyecto</th>
-                    <th scope="col">Empleado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a name="" id="" class="btn btn-info" href="" role="button">Editar</a></td>
-                    <td><a name="" id="" class="btn btn-danger" href="" role="button">Borrar</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-          <div class="card-footer text-muted">
-
-          </div>
-        </div>
-
-
-      </div>
+        <li class="nav-item">
+          <a class="nav-link" href="TipoDocumento.html">Documentos</a>
+        </li>
+      </ul>
     </div>
   </div>
+</nav>
 
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-    crossorigin="anonymous"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <a id="btnAdd" class="btn btn-success" role="button">Asignar un empleado a un proyecto</a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Lista de asignaciones</h4>
+          <div class="table-responsive">
+            <table id="tblProyectosEmpleados" class="table table-primary">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Proyecto</th>
+                <th scope="col">Empleado</th>
+              </tr>
+              </thead>
+              <tbody id="tbodyProyectosEmpleados"></tbody>
+            </table>
+          </div>
+          <div id="frmProyectosEmpleados" class="ocultar">
+            <form enctype="multipart/form-data">
+              <br>
+              <div class="mb-3">
+                <div id="divId">
+                  <label>ID</label>
+                  <input type="text" id="id_asignacion_empleado_proyecto" disabled />
+                </div>
+                <div>
+                  <label>PROYECTO</label><br>
+                  <select id="id_proyecto" class="campo-ancho"></select>
+                  <br><br>
+                </div>
+                <div>
+                  <label>EMPLEADO</label><br>
+                  <select id="id_empleado" class="campo-ancho"></select>
+                  <br><br>
+                </div>
+                <div>
+                  <input type="button" id="btnEnviar" value="Añadir" class="btnEnviar"/><br> <br>
+                </div>
+                <div>
+                  <input type="button" id="btnCancelar" value="Cancelar" class="btnCancelar"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-    crossorigin="anonymous"></script>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+
+<script src="jquery.js"></script>
+<script src="AsignacionEmpleado.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,7 +21,6 @@ public class ProyectoService implements ProyectoFactory {
     @Autowired
     private EstadoProyectoRepository estadoProyectoRepository;
 
-
     public List<Proyecto> obtenerProyectos(){
         List<Proyecto> proyectoList = proyectoRepository.findAll();
         return proyectoList;
@@ -31,9 +29,9 @@ public class ProyectoService implements ProyectoFactory {
     public void eliminarProyectos(int id) {
         proyectoRepository.deleteById(id);
     }
+
     @Override
     public Proyecto createProyecto(String nombreProyecto, LocalDate fechaInicio, LocalDate fechaFin, String descripcionProyecto, Integer presupuesto, EstadoProyecto idEstadoProyecto) {
-
         EstadoProyecto estadoProyecto = estadoProyectoRepository.findById(idEstadoProyecto.getId_estado_proyecto())
                 .orElseThrow(() -> new EntityNotFoundException("EstadoProyecto no encontrado"));
 
@@ -46,5 +44,22 @@ public class ProyectoService implements ProyectoFactory {
         proyecto.setId_estado_proyecto(estadoProyecto);
 
         return proyectoRepository.save(proyecto);
+    }
+
+    public Proyecto updateProyecto(Proyecto proyecto) {
+        Proyecto proyectoExistente = proyectoRepository.findById(proyecto.getId_proyecto())
+                .orElseThrow(() -> new EntityNotFoundException("Proyecto no encontrado"));
+
+        EstadoProyecto estadoProyecto = estadoProyectoRepository.findById(proyecto.getId_estado_proyecto().getId_estado_proyecto())
+                .orElseThrow(() -> new EntityNotFoundException("EstadoProyecto no encontrado"));
+
+        proyectoExistente.setNombre_proyecto(proyecto.getNombre_proyecto());
+        proyectoExistente.setFecha_inicio(proyecto.getFecha_inicio());
+        proyectoExistente.setFecha_fin(proyecto.getFecha_fin());
+        proyectoExistente.setDescripcion_proyecto(proyecto.getDescripcion_proyecto());
+        proyectoExistente.setPresupuesto(proyecto.getPresupuesto());
+        proyectoExistente.setId_estado_proyecto(estadoProyecto);
+
+        return proyectoRepository.save(proyectoExistente);
     }
 }

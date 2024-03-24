@@ -1,0 +1,36 @@
+.btn {
+    cursor: pointer;
+}
+
+.ocultar {
+    display: none;
+}
+
+.mostrar {
+    display: block;
+}
+.campo-ancho {
+    width: 70%;
+}
+.btnEnviar {
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+.btnCancelar {
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+.btnEditar {
+    margin-left: 10px;
+    background-color: yellow;
+    color: black;
+    border-color: yellow;
+
+}
+.btnDelete {
+    margin-left: 10px;
+    background-color: red;
+    border-color: red;
+}

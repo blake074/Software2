@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title></title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'Principal.css' %}">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'Principal.css' %}">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Empresa ABC</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav d-flex">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Proyectos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="Proyecto2.html">Lista de proyectos</a></li>
+            <li><a class="dropdown-item" href="ListaEtapas.html">Etapas</a></li>
+            <li><a class="dropdown-item" href="EstadoProyecto.html">Estados</a></li>
+            <li><a class="dropdown-item" href="AsignacionEmpleado.html">Asignaciones</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            Empleados
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="Empleado2.html">Lista de empleados</a></li>
+            <li><a class="dropdown-item" href="Rol.html">Roles</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="TipoDocumento.html">Documentos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+
+      <div class="card">
+        <div class="card-header">
+          <a id="btnAdd" class="btn btn-success" role="button">Nuevo Proyecto</a>
+          <a class="btn btn-success" href="" role="button">Descargar informe</a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">Lista de proyectos</h4>
+          <div class="table-responsive">
+            <table id="tblProyectos" class="table table-primary">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Presupuesto</th>
+                <th scope="col">Fecha inicio</th>
+                <th scope="col">Fecha fin</th>
+                <th scope="col">Estado</th>
+              </tr>
+              </thead>
+              <tbody id="tbodyProyectos"></tbody>
+            </table>
+          </div>
+          <div id="frmProyectos" class="ocultar">
+            <form enctype="multipart/form-data">
+              <br>
+              <div class="mb-3">
+                <div id="divId">
+                  <label>ID</label>
+                  <input type="text" id="id_proyecto" disabled />
+                </div>
+                <div>
+                  <label>NOMBRE</label>
+                  <br>
+                  <input type="text" id="nombre_proyecto" placeholder="Ingrese el nombre del proyecto" class="campo-ancho"/>
+                  <br><br>
+                </div>
+                <div>
+                  <label>DESCRIPCIÓN</label>
+                  <br>
+                  <input type="text" id="descripcion_proyecto" placeholder="Ingrese el nombre del empleado" class="campo-ancho"/>
+                  <br><br>
+                </div>
+                <div>
+                  <label>PRESUPUESTO</label><br>
+                  <input type="number" id="presupuesto" placeholder="Ingrese el presupuesto para el proyecto" class="campo-ancho"/>
+                  <br><br>
+                </div>
+                <div>
+                  <label>FECHA INICIO</label><br>
+                  <input type="date" id="fecha_inicio" class="campo-ancho"/>
+                  <br><br>
+                </div>
+                <div>
+                  <label>FECHA FINAL</label><br>
+                  <input type="date" id="fecha_fin" class="campo-ancho"/>
+                  <br><br>
+                </div>
+                <div>
+                  <label>ESTADO</label><br>
+                  <select id="estado" name="id_estado_proyecto" class="campo-ancho"></select>
+                  <br><br>
+                </div>
+                <div>
+                  <input type="button" id="btnEnviar" value="Añadir" class="btnEnviar"/><br> <br>
+                </div>
+                <div>
+                  <input type="button" id="btnCancelar" value="Cancelar" class="btnCancelar"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+
+<script src="jquery.js"></script>
+<script src="Proyecto.js"></script>
+</body>
+
+</html>

@@ -16,7 +16,7 @@ public class EmpleadoBuilder {
                 .fechaNacimiento(empleado.getFecha_nacimiento())
                 .telefono(empleado.getTelefono_empleado())
                 .numDoc_Empleado(empleado.getNum_doc_empleado())
-                .ID_TipoDocumento(empleado.getID_TipoDocumento())
+                .ID_TipoDocumento(empleado.getId_tipo_documento())
                 .build();
     }
 }

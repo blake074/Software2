@@ -2,13 +2,11 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
-
 @Getter
 @Setter
 @Entity
@@ -33,10 +31,10 @@ public class Empleado {
     private int salario_empleado;
 
     @Column(name = "fecha_ingreso")
-    private Date fecha_ingreso;
+    private LocalDate fecha_ingreso;
 
     @Column(name = "fecha_nacimiento")
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
 
     @Column(name = "telefono_empleado")
     private String telefono_empleado;
@@ -45,15 +43,11 @@ public class Empleado {
     @Column(name = "num_doc_empleado")
     private String num_doc_empleado;
 
-    @ManyToOne //(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "ID_TipoDocumento")
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private TipoDocumento ID_TipoDocumento;
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_documento")
+    private TipoDocumento id_tipo_documento;
 
-    @ManyToOne //(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_rol")
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Rol id_rol;
-
-
 }
