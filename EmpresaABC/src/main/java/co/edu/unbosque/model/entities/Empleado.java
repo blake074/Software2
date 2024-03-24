@@ -46,9 +46,9 @@ public class Empleado {
     private String num_doc_empleado;
 
     @ManyToOne //(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_tipo_documento")
+    @JoinColumn(name = "ID_TipoDocumento")
     //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private TipoDocumento id_tipo_documento;
+    private TipoDocumento ID_TipoDocumento;
 
     @ManyToOne //(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_rol")

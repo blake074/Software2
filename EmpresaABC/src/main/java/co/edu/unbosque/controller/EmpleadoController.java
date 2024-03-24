@@ -2,111 +2,116 @@ package co.edu.unbosque.controller;
 
 import co.edu.unbosque.model.entities.Empleado;
 import co.edu.unbosque.model.entities.EmpleadoDTO;
+import co.edu.unbosque.model.entities.Proyecto;
 import co.edu.unbosque.model.repositories.EmpleadoRepository;
 import co.edu.unbosque.model.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/api/empleados")
 public class EmpleadoController {
-    @GetMapping("/AsignacionEmpleado")
+    @GetMapping("AsignacionEmpleado")
     public ModelAndView asignacionEmpleado() {
 
         return new ModelAndView("AsignacionEmpleado");
     }
 
-    @GetMapping("/AsignacionEmpleadoForm")
+    @GetMapping("AsignacionEmpleadoForm")
     public ModelAndView asignacionEmpleadoForm() {
 
         return new ModelAndView("AsignacionEmpleadoForm");
 
     }
 
-    @GetMapping("/Empleado")
-    public ModelAndView empleado() {
-
-        return new ModelAndView("Empleado");
+    @GetMapping
+    public String empleadoMostrar(Model model){
+        List<EmpleadoDTO> empleados = empleadoService.obtenerEmpleados();
+        model.addAttribute("empleados", empleados);
+        System.out.println(empleados.toString());
+        return "Empleado";
     }
 
-    @GetMapping("/EmpleadoForm")
-    public ModelAndView empleadoForm() {
+    @GetMapping("EmpleadoForm")
+    public String empleadoForm() {
 
-        return new ModelAndView("EmpleadoForm");
+        return "EmpleadoForm";
 
     }
 
-    @GetMapping("/EstadoProyecto")
+    @GetMapping("EstadoProyecto")
     public ModelAndView estadoProyecto() {
 
         return new ModelAndView("EstadoProyecto");
     }
 
-    @GetMapping("/EstadoProyectoForm")
+    @GetMapping("EstadoProyectoForm")
     public ModelAndView estadoProyectoForm() {
 
         return new ModelAndView("EstadoProyectoForm");
     }
 
-    @GetMapping("/EtapaProyecto")
+    @GetMapping("EtapaProyecto")
     public ModelAndView etapaProyecto() {
 
         return new ModelAndView("EtapaProyecto");
     }
 
-    @GetMapping("/EtapaProyectoForm")
+    @GetMapping("EtapaProyectoForm")
     public ModelAndView etapaProyectoForm() {
 
         return new ModelAndView("EtapaProyectoForm");
     }
 
-    @GetMapping("/ListaEtapas")
+    @GetMapping("ListaEtapas")
     public ModelAndView listaEtapas() {
 
         return new ModelAndView("ListaEtapas");
     }
 
-    @GetMapping("/ListaEtapasForm")
+    @GetMapping("ListaEtapasForm")
     public ModelAndView listaEtapasForm() {
 
         return new ModelAndView("ListaEtapasForm");
     }
-
+/*
     @GetMapping("/")
     public ModelAndView index() {
 
         return new ModelAndView("Proyecto");
     }
-
-    @GetMapping("/ProyectoForm")
+*/
+    @GetMapping("ProyectoForm")
     public ModelAndView proyectosForm() {
 
         return new ModelAndView("ProyectoForm");
     }
 
-    @GetMapping("/Rol")
+    @GetMapping("Rol")
     public ModelAndView rol() {
 
         return new ModelAndView("Rol");
     }
 
-    @GetMapping("/RolForm")
+    @GetMapping("RolForm")
     public ModelAndView rolForm() {
 
         return new ModelAndView("RolForm");
     }
 
-    @GetMapping("/TipoDocumento")
+    @GetMapping("TipoDocumento")
     public ModelAndView tipoDocumento() {
 
         return new ModelAndView("TipoDocumento");
     }
 
-    @GetMapping("/TipoDocumentoForm")
+    @GetMapping("TipoDocumentoForm")
     public ModelAndView tipoDocumentoForm() {
 
         return new ModelAndView("TipoDocumentoForm");

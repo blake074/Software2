@@ -7,13 +7,15 @@ import co.edu.unbosque.model.services.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/proyectos")
 public class ProyectoController {
     @Autowired
@@ -23,6 +25,13 @@ public class ProyectoController {
     @GetMapping("/lista")
     public List<Proyecto> obtenerEmpleados() {
         return (List<Proyecto>) proyectoService.obtenerProyectos();
+    }
+    @GetMapping
+    public String proyectoMostrar(Model model){
+        List<Proyecto> proyectos = proyectoService.obtenerProyectos();
+        model.addAttribute("proyectos", proyectos);
+        System.out.println(proyectos.toString());
+        return "Proyecto";
     }
 
     @PostMapping("/crear")

@@ -21,4 +21,20 @@ public class EmpleadoDTO {
     private String telefono;
     private String numDoc_Empleado;
     private TipoDocumento ID_TipoDocumento;
+
+    @Override
+    public String toString() {
+        return "EmpleadoDTO{" +
+                "id=" + id +
+                ", rol=" + rol +
+                ", nombreCompleto='" + nombreCompleto + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", salario=" + salario +
+                ", fechaIngreso=" + fechaIngreso +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", telefono='" + telefono + '\'' +
+                ", numDoc_Empleado='" + numDoc_Empleado + '\'' +
+                ", ID_TipoDocumento=" + ID_TipoDocumento +
+                '}';
+    }
 }
